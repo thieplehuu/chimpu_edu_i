@@ -1,5 +1,5 @@
 import 'package:chimpu_edu_i/core/widgets/network_image.dart';
-import 'package:chimpu_edu_i/pages/teacher/home/home.dart';
+import 'package:chimpu_edu_i/pages/teacher/index.dart';
 /**
  * Author: Damodar Lohani
  * profile: https://github.com/lohanidamodar
@@ -100,7 +100,7 @@ class LoginPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => HomePage(),
+                      builder: (_) => IndexPage(),
                     )),
                 },
                 shape: RoundedRectangleBorder(

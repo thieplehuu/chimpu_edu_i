@@ -2,8 +2,8 @@ import 'package:chimpu_edu_i/core/theme/app_theme.dart';
 import 'package:chimpu_edu_i/pages/teacher/home_drawer.dart';
 import 'package:flutter/material.dart';
 
-class DrawerUserController extends StatefulWidget {
-  const DrawerUserController({
+class NavDrawerController extends StatefulWidget {
+  const NavDrawerController({
     Key key,
     this.drawerWidth = 250,
     this.onDrawerCall,
@@ -25,10 +25,10 @@ class DrawerUserController extends StatefulWidget {
   final DrawerIndex screenIndex;
 
   @override
-  _DrawerUserControllerState createState() => _DrawerUserControllerState();
+  _NavDrawerControllerState createState() => _NavDrawerControllerState();
 }
 
-class _DrawerUserControllerState extends State<DrawerUserController>
+class _NavDrawerControllerState extends State<NavDrawerController>
     with TickerProviderStateMixin {
   ScrollController scrollController;
   AnimationController iconAnimationController;
@@ -178,30 +178,43 @@ class _DrawerUserControllerState extends State<DrawerUserController>
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).padding.top + 8,
                               left: 8),
-                          child: SizedBox(
-                            width: AppBar().preferredSize.height - 8,
-                            height: AppBar().preferredSize.height - 8,
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(
-                                    AppBar().preferredSize.height),
-                                child: Center(
-                                  child: widget.menuView != null
-                                      ? widget.menuView
-                                      : AnimatedIcon(
-                                          icon: widget.animatedIconData != null
-                                              ? widget.animatedIconData
-                                              : AnimatedIcons.arrow_menu,
-                                          progress: iconAnimationController),
+                          child: GestureDetector(
+                            child:SizedBox(
+                              width: AppBar().preferredSize.height - 8,
+                              height: AppBar().preferredSize.height - 8,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 16.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Container(
+                                      height: 4.0,
+                                      width: 18.0,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(2.0),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4.0),
+                                    Container(
+                                      height: 4.0,
+                                      width: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(2.0),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                onTap: () {
-                                  FocusScope.of(context)
-                                      .requestFocus(FocusNode());
-                                  onDrawerClick();
-                                },
                               ),
-                            ),
+                            ),                            
+                            onTap: () {
+                              FocusScope.of(context)
+                                  .requestFocus(FocusNode());
+                              onDrawerClick();
+                            },
                           ),
                         ),
                       ],

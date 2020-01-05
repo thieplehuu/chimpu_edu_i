@@ -1,15 +1,15 @@
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:chimpu_edu_i/pages/teacher/drawer_user_controller.dart';
+import 'package:chimpu_edu_i/pages/teacher/navigation_drawer_controller.dart';
 import 'package:chimpu_edu_i/pages/teacher/home/home.dart';
 import 'package:chimpu_edu_i/pages/teacher/home_drawer.dart';
 import 'package:flutter/material.dart';
 
-class NavigationHomeScreen extends StatefulWidget {
+class NavigationScreen extends StatefulWidget {
   @override
-  _NavigationHomeScreenState createState() => _NavigationHomeScreenState();
+  _NavigationScreenScreenState createState() => _NavigationScreenScreenState();
 }
 
-class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
+class _NavigationScreenScreenState extends State<NavigationScreen> {
   Widget screenView;
   DrawerIndex drawerIndex;
   AnimationController sliderAnimationController;
@@ -30,7 +30,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         bottom: false,
         child: Scaffold(
           backgroundColor: AppTheme.nearlyWhite,
-          body: DrawerUserController(
+          body: NavDrawerController(
             screenIndex: drawerIndex,
             drawerWidth: MediaQuery.of(context).size.width * 0.75,
             animationController: (AnimationController animationController) {
