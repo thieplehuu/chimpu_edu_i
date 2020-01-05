@@ -1,19 +1,18 @@
+import 'package:chimpu_edu_i/core/res/assets.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../core/res/assets.dart';
-
-class HomeGvPage extends StatefulWidget {
-  const HomeGvPage({Key key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
 
   @override
-  _HomeGvPageState createState() => _HomeGvPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeGvPageState extends State<HomeGvPage> with TickerProviderStateMixin {
-  static final String path = "lib/pages/top/top.dart";
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  static final String path = "lib/pages/teacher/home/home.dart";
 
   @override
   void initState() {

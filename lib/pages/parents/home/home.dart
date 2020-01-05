@@ -1,13 +1,29 @@
+import 'package:chimpu_edu_i/core/res/assets.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../core/res/assets.dart';
 
-class HomePhPage extends StatelessWidget {
-  static final String path = "lib/pages/top/top.dart";
+class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
 
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  static final String path = "lib/pages/parents/home/home.dart";
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     var orangeTextStyle = TextStyle(

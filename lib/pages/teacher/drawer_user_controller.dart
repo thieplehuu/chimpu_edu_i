@@ -1,5 +1,5 @@
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:chimpu_edu_i/pages/home/home_drawer.dart';
+import 'package:chimpu_edu_i/pages/teacher/home_drawer.dart';
 import 'package:flutter/material.dart';
 
 class DrawerUserController extends StatefulWidget {

@@ -1,8 +1,7 @@
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:chimpu_edu_i/pages/home/drawer_user_controller.dart';
-import 'package:chimpu_edu_i/pages/home/home_drawer.dart';
-import 'package:chimpu_edu_i/pages/home/home_gv.dart';
-import 'package:chimpu_edu_i/pages/home/home_ph.dart';
+import 'package:chimpu_edu_i/pages/teacher/drawer_user_controller.dart';
+import 'package:chimpu_edu_i/pages/teacher/home/home.dart';
+import 'package:chimpu_edu_i/pages/teacher/home_drawer.dart';
 import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   @override
   void initState() {
     drawerIndex = DrawerIndex.HOME;
-    screenView = const HomeGvPage();
+    screenView = const HomePage();
     super.initState();
   }
 
@@ -52,11 +51,11 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       drawerIndex = drawerIndexdata;
       if (drawerIndex == DrawerIndex.HOME) {
         setState(() {
-          screenView = const HomeGvPage();
+          screenView = const HomePage();
         });
       } else if (drawerIndex == DrawerIndex.Help) {
         setState(() {
-          screenView = HomePhPage();
+          screenView = HomePage();
         });
       }  else {
         
