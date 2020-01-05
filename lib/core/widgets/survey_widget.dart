@@ -1,10 +1,10 @@
+
+
+import 'package:chimpu_edu_i/core/data/firestore_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_challenges/core/data/firestore_service.dart';
-import 'package:flutter_ui_challenges/core/data/models/survey.dart';
-import 'package:flutter_ui_challenges/features/auth/data/model/user_repository.dart';
-import 'package:flutter_ui_challenges/features/auth/data/service/firestore_service.dart';
-import 'package:provider/provider.dart';
+
+import '../../data/model/survey.dart';
 
 class SurveyWidget extends StatelessWidget {
   final SurveyItem survey;
@@ -34,10 +34,6 @@ class SurveyWidget extends StatelessWidget {
                   FirestoreService().updateDocument('surveys', survey.id, {
                     val: FieldValue.increment(1),
                   });
-                  AuthFirestoreService().updateUserData(Provider.of<UserRepository>(context).user.uid, {"surveys": FieldValue.arrayUnion([survey.id])});
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text("Thank you for providing us feedback")
-                  ));
                 },
               ))
             ],

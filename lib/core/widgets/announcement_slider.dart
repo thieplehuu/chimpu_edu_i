@@ -1,3 +1,4 @@
+import 'package:chimpu_edu_i/core/widgets/announcement_list_item.dart';
 /**
  * Author: Damodar Lohani
  * profile: https://github.com/lohanidamodar
@@ -5,9 +6,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_ui_challenges/features/announcements/data/model/announcement.dart';
 
-import 'announcement_list_item.dart';
+import '../../data/model/announcement.dart';
+
 
 class AnnouncementSlider extends StatelessWidget {
   const AnnouncementSlider({

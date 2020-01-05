@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../core/res/assets.dart';
 
-class TopPage extends StatelessWidget {
+class HomePhPage extends StatelessWidget {
   static final String path = "lib/pages/top/top.dart";
 
   @override
@@ -60,7 +60,7 @@ class TopPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         children: <Widget>[
           Text(
-            "Wellcome to Preschool Edu",
+            "Hoạt động",
             style: Theme.of(context).textTheme.display1.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -72,7 +72,7 @@ class TopPage extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   child: _buildActionWidget(FontAwesomeIcons.calendarCheck,
-                      "Phụ Huynh", Colors.deepOrange.withOpacity(0.7)),
+                      "Lời nhắn", Colors.deepOrange.withOpacity(0.7)),
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -83,7 +83,7 @@ class TopPage extends StatelessWidget {
               const SizedBox(width: 16.0),
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.lock, "Giáo Viên",
+                  child: _buildActionWidget(FontAwesomeIcons.lock, "Dặn thuốc",
                       Colors.blue.withOpacity(0.6)),
                   onTap: () => Navigator.push(
                       context,
@@ -99,7 +99,7 @@ class TopPage extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Videos",
+                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Xin nghỉ",
                       Colors.indigo.withOpacity(0.7)),
                   onTap: () {},
                 ),
@@ -108,7 +108,27 @@ class TopPage extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   child: _buildActionWidget(
-                      FontAwesomeIcons.file, "Blogs", Colors.greenAccent),
+                      FontAwesomeIcons.file, "Dã ngoại", Colors.greenAccent),
+                  onTap: () {},
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16.0),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: GestureDetector(
+                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Đón về",
+                      Colors.indigo.withOpacity(0.7)),
+                  onTap: () {},
+                ),
+              ),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: GestureDetector(
+                  child: _buildActionWidget(
+                      FontAwesomeIcons.file, "Album", Colors.greenAccent),
                   onTap: () {},
                 ),
               ),

@@ -5,8 +5,25 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../core/res/assets.dart';
 
-class TopPage extends StatelessWidget {
+class HomeGvPage extends StatefulWidget {
+  const HomeGvPage({Key key}) : super(key: key);
+
+  @override
+  _HomeGvPageState createState() => _HomeGvPageState();
+}
+
+class _HomeGvPageState extends State<HomeGvPage> with TickerProviderStateMixin {
   static final String path = "lib/pages/top/top.dart";
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +77,22 @@ class TopPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         children: <Widget>[
           Text(
-            "Wellcome to Preschool Edu",
+            "Album ảnh",
+            style: Theme.of(context).textTheme.display1.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                  child: _buildActionWidget(FontAwesomeIcons.lock, "Images",
+                      Colors.blue.withOpacity(0.6)))
+            ],
+          ),
+          const SizedBox(height: 16.0),
+          Text(
+            "Hoạt động",
             style: Theme.of(context).textTheme.display1.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -72,7 +104,7 @@ class TopPage extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   child: _buildActionWidget(FontAwesomeIcons.calendarCheck,
-                      "Phụ Huynh", Colors.deepOrange.withOpacity(0.7)),
+                      "Điểm danh", Colors.deepOrange.withOpacity(0.7)),
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -83,7 +115,7 @@ class TopPage extends StatelessWidget {
               const SizedBox(width: 16.0),
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.lock, "Giáo Viên",
+                  child: _buildActionWidget(FontAwesomeIcons.lock, "Lời nhắn",
                       Colors.blue.withOpacity(0.6)),
                   onTap: () => Navigator.push(
                       context,
@@ -99,7 +131,7 @@ class TopPage extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Videos",
+                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Đón về",
                       Colors.indigo.withOpacity(0.7)),
                   onTap: () {},
                 ),
@@ -108,7 +140,27 @@ class TopPage extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   child: _buildActionWidget(
-                      FontAwesomeIcons.file, "Blogs", Colors.greenAccent),
+                      FontAwesomeIcons.file, "Dã ngoại", Colors.greenAccent),
+                  onTap: () {},
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16.0),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: GestureDetector(
+                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Ăn",
+                      Colors.indigo.withOpacity(0.7)),
+                  onTap: () {},
+                ),
+              ),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: GestureDetector(
+                  child: _buildActionWidget(
+                      FontAwesomeIcons.file, "Ngủ", Colors.greenAccent),
                   onTap: () {},
                 ),
               ),
