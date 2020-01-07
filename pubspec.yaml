@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2  
   font_awesome_flutter: ^8.5.0
   cached_network_image: ^2.0.0-rc
+  circular_profile_avatar: ^1.0.6
+  circular_check_box: ^1.0.1
   url_launcher: ^5.4.1
   flutter_swiper: ^1.1.6
   cloud_firestore: ^0.13.0+1

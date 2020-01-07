@@ -1,15 +1,15 @@
 import 'package:chimpu_edu_i/core/widgets/list_tile_checkbox.dart';
 import 'package:flutter/material.dart';
 
-class RollUpPage extends StatefulWidget {
-  const RollUpPage({Key key}) : super(key: key);
+class PickUpPage extends StatefulWidget {
+  const PickUpPage({Key key}) : super(key: key);
 
   @override
-  _RollUpPageState createState() => _RollUpPageState();
+  _PickUpPageState createState() => _PickUpPageState();
 }
 
-class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
-  static final String path = "lib/pages/teacher/rollup/rollup.dart";
+class _PickUpPageState extends State<PickUpPage> with TickerProviderStateMixin {
+  static final String path = "lib/pages/teacher/pickup/pickup.dart";
 
   @override
   void initState() {

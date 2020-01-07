@@ -106,7 +106,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: GestureDetector(
                   child: _buildActionWidget(FontAwesomeIcons.bookmark, "Đón về",
                       Colors.indigo.withOpacity(0.7)),
-                  onTap: () {},
+                  onTap: ()  => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => RollUpPage(),
+                    )),
                 ),
               ),
               const SizedBox(width: 16.0),
