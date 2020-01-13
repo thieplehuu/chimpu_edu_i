@@ -4,10 +4,12 @@ import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 
 class ListTileCheckBox extends StatelessWidget {
+  final String title;
+  final String subTitle;
   final String image;
   final BoxFit fit;
   final double height;
-  const ListTileCheckBox(this.image, {Key key,this.fit,this.height}) : super(key: key);
+  const ListTileCheckBox({this.title, this.subTitle, this.image, Key key,this.fit,this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class ListTileCheckBox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Title text',
+                    title,
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.white,
@@ -46,7 +48,7 @@ class ListTileCheckBox extends StatelessWidget {
                   ),
                   SizedBox(height: 8,),
                   Text(
-                    'Sub title text',
+                    subTitle,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold

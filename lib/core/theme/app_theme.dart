@@ -86,4 +86,27 @@ class AppTheme {
     color: lightText, // was lightText
   );
 
+  static const TextStyle h1 = TextStyle( // Header 1 -> header 1
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    letterSpacing: 0.2,
+    color: nearlyWhite, // was lightText
+  );
+
+  static const TextStyle h2 = TextStyle( // Header 2 -> header 2
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+    letterSpacing: 0.2,
+    color: nearlyWhite, // was lightText
+  );
+  
+  static const TextStyle h3 = TextStyle( // Header 3 -> header 3
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 10,
+    letterSpacing: 0.2,
+    color: nearlyWhite, // was lightText
+  );
 }
