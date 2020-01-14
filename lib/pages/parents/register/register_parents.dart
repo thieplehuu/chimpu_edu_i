@@ -1,6 +1,5 @@
 import 'package:chimpu_edu_i/core/widgets/network_image.dart';
 import 'package:chimpu_edu_i/pages/teacher/home/home.dart';
-import 'package:chimpu_edu_i/pages/teacher/register/register_teacher.dart';
 /**
  * Author: Damodar Lohani
  * profile: https://github.com/lohanidamodar
@@ -8,9 +7,9 @@ import 'package:chimpu_edu_i/pages/teacher/register/register_teacher.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../core/res/assets.dart';
+import '../../../core/res/assets.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterParentsPage extends StatelessWidget {
   static final String path = "lib/pages/login/login.dart";
   @override
   Widget build(BuildContext context) {
@@ -118,7 +117,7 @@ class LoginPage extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => RegisterTeacherPage(),
+                        builder: (_) => RegisterParentsPage(),
                       )),
                 ),
                 Container(
@@ -132,7 +131,7 @@ class LoginPage extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => LoginPage(),
+                        builder: (_) => RegisterParentsPage(),
                       )),
                 ),
               ],
