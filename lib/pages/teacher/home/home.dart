@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             children: <Widget>[
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.calendarCheck,
+                  child: _buildActionWidget(FontAwesomeIcons.pen,
                       "Điểm danh", Colors.deepOrange.withOpacity(0.7)),
                   onTap: () => Navigator.push(
                       context,
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               const SizedBox(width: 16.0),
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.lock, "Lời nhắn",
+                  child: _buildActionWidget(FontAwesomeIcons.sms, "Lời nhắn",
                       Colors.blue.withOpacity(0.6)),
                   onTap: () => Navigator.push(
                       context,
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             children: <Widget>[
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Đón về",
+                  child: _buildActionWidget(FontAwesomeIcons.truckPickup, "Đón về",
                       Colors.indigo.withOpacity(0.7)),
                   onTap: ()  => Navigator.push(
                     context,
@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Expanded(
                 child: GestureDetector(
                   child: _buildActionWidget(
-                      FontAwesomeIcons.file, "Dã ngoại", Colors.greenAccent),
+                      FontAwesomeIcons.mountain, "Dã ngoại", Colors.greenAccent),
                   onTap: ()  => Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -135,8 +135,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             children: <Widget>[
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Ăn",
-                      Colors.indigo.withOpacity(0.7)),
+                  child: _buildActionWidget(FontAwesomeIcons.utensils, "Ăn",
+                      Colors.pinkAccent.withOpacity(0.7)),
                   onTap: () {},
                 ),
               ),
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Expanded(
                 child: GestureDetector(
                   child: _buildActionWidget(
-                      FontAwesomeIcons.file, "Ngủ", Colors.greenAccent),
+                      FontAwesomeIcons.bed, "Ngủ", Colors.purpleAccent),
                   onTap: () {},
                 ),
               ),
