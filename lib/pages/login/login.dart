@@ -1,5 +1,6 @@
 import 'package:chimpu_edu_i/core/widgets/network_image.dart';
 import 'package:chimpu_edu_i/pages/teacher/home/home.dart';
+import 'package:chimpu_edu_i/pages/teacher/index.dart';
 import 'package:chimpu_edu_i/pages/teacher/register/register_teacher.dart';
 /**
  * Author: Damodar Lohani

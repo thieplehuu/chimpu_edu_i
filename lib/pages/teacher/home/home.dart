@@ -1,6 +1,8 @@
 import 'package:chimpu_edu_i/core/res/assets.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/message/message.dart';
+import 'package:chimpu_edu_i/pages/teacher/pickup/pickup.dart';
+import 'package:chimpu_edu_i/pages/teacher/picnic/picnic.dart';
 import 'package:chimpu_edu_i/pages/teacher/rollup/rollup.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -110,7 +112,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   onTap: ()  => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => RollUpPage(),
+                      builder: (_) => PickUpPage(),
                     )),
                 ),
               ),
@@ -119,7 +121,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: GestureDetector(
                   child: _buildActionWidget(
                       FontAwesomeIcons.file, "Dã ngoại", Colors.greenAccent),
-                  onTap: () {},
+                  onTap: ()  => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => PicNicPage(),
+                    )),
                 ),
               ),
             ],

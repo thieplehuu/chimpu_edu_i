@@ -1,5 +1,6 @@
 import 'package:chimpu_edu_i/data/model/children.dart';
 import 'package:chimpu_edu_i/data/model/parents.dart';
+import 'package:chimpu_edu_i/data/model/picnic.dart';
 import 'package:intl/intl.dart';
 import 'package:chimpu_edu_i/data/model/teacher.dart';
 
@@ -204,4 +205,43 @@ final List<Children> childrens = [
     ],
     birth: DateFormat("yyyy-MM-dd").parse('2016-07-19'),
   )
+];
+
+
+final List<PicNic> picnics = [
+  PicNic(
+    id: 1,
+    title: 'Dã ngoại công viên thỏ trắng',
+    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
+    address: 'Công viên thỏ trắng-520 CMT8'
+  ),
+  PicNic(
+    id: 2,
+    title: 'Dã ngoại công viên thỏ trắng',
+    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
+    address: 'Công viên thỏ trắng-520 CMT8'
+  ),
+  PicNic(
+    id: 3,
+    title: 'Dã ngoại công viên thỏ trắng',
+    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
+    address: 'Công viên thỏ trắng-520 CMT8'
+  ),
+  PicNic(
+    id: 4,
+    title: 'Dã ngoại công viên thỏ trắng',
+    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
+    address: 'Công viên thỏ trắng-520 CMT8'
+  ),
+  PicNic(
+    id: 5,
+    title: 'Dã ngoại công viên thỏ trắng',
+    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
+    address: 'Công viên thỏ trắng-520 CMT8'
+  ),
 ];

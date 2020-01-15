@@ -48,8 +48,7 @@ class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-                gradient:
-                    LinearGradient(colors: [Colors.lightGreen, Colors.green]),
+                color: Colors.blue.withOpacity(0.6),
                 borderRadius: BorderRadius.all(const Radius.circular(8.0))),
             height: 98,
             width: width,
@@ -119,19 +118,19 @@ class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(10.0),
                   ),
-                  borderSide: const BorderSide(color: Colors.lightGreen, width: 1.0),
+                  borderSide: const BorderSide(color: Colors.blue, width: 1.0),
                 ),
                 focusedBorder: const OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(10.0),
                   ),
-                  borderSide: const BorderSide(color: Colors.lightGreen, width: 1.0),
+                  borderSide: const BorderSide(color: Colors.blue, width: 1.0),
                 ),
                 border: new OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(10.0),
                   ),
-                  borderSide: const BorderSide(color: Colors.lightGreen, width: 1.0),
+                  borderSide: const BorderSide(color: Colors.blue, width: 1.0),
                 ),
                 hintText: 'Search'
               ),
@@ -141,7 +140,7 @@ class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: childrens.length,
               itemBuilder: (BuildContext context, int index) {
                 var children = childrens[index];
                 return Card(
@@ -149,8 +148,7 @@ class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
                   margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.lightGreen, Colors.green])),
+                      color: Colors.blue.withOpacity(0.6)),
                     child: Container(
                       height: 110,
                       padding: EdgeInsets.all(12.0),
