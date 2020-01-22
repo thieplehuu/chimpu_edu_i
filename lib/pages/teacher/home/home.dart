@@ -1,10 +1,13 @@
 import 'package:chimpu_edu_i/core/res/assets.dart';
+import 'package:chimpu_edu_i/data/dummy/index.dart';
+import 'package:chimpu_edu_i/data/model/children.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/message/message.dart';
 import 'package:chimpu_edu_i/pages/teacher/pickup/pickup.dart';
 import 'package:chimpu_edu_i/pages/teacher/picnic/list.dart';
 import 'package:chimpu_edu_i/pages/teacher/picnic/schedule.dart';
 import 'package:chimpu_edu_i/pages/teacher/rollup/rollup.dart';
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,6 +34,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var data = childrens;
     var orangeTextStyle = TextStyle(
       color: Colors.deepOrange,
     );
@@ -60,13 +64,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   color: Colors.black,
                 ),
           ),
-          Row(
-            children: <Widget>[
-              Expanded(
-                  child: _buildActionWidget(FontAwesomeIcons.lock, "Images",
-                      Colors.blue.withOpacity(0.6)))
-            ],
-          ),
+          const SizedBox(height: 16.0),
+          _buildImageSlider(data, Colors.blue.withOpacity(0.6)),
           const SizedBox(height: 16.0),
           Text(
             "Hoạt động",
@@ -194,7 +193,38 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ],
     );
   }
-
+  Container _buildImageSlider(List<Children> childrens, Color color){
+    return Container(
+      height: 75.0,
+      padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,        
+        itemCount: picnics.length,
+        itemBuilder: (BuildContext context, int index) {
+          var children = childrens[index];
+          return Container(
+            width: 75,
+            height: 75,
+            margin: EdgeInsets.only(right: 4.0),
+            child: CircularProfileAvatar(
+              children.avatarUrl,
+              errorWidget: (context, url, error) => Image.asset(
+                'assets/placeholder.jpg',
+                fit: BoxFit.cover,
+              ),
+              radius: 75 / 2,
+              borderWidth: 1,
+              borderColor: Colors.white70,
+            ),
+          );
+        },
+      ),
+    );
+  }
   Stack _buildActionWidget(IconData icon, String label, Color color) {
     return Stack(
       children: <Widget>[

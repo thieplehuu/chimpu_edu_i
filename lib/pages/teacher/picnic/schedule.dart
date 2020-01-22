@@ -1,6 +1,11 @@
-import 'package:chimpu_edu_i/core/widgets/custom_icon_decoration.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chimpu_edu_i/core/theme/app_theme.dart';
+import 'package:chimpu_edu_i/pages/teacher/picnic/booking.dart';
+import 'package:chimpu_edu_i/pages/teacher/picnic/picnic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
+import 'package:chimpu_edu_i/data/dummy/index.dart';
+import 'package:intl/intl.dart';
 
 class SchedulePage extends StatefulWidget {
   @override
@@ -12,7 +17,7 @@ class _SchedulePageState extends State<SchedulePage> {
   void _handleNewDate(date) {
     setState(() {
       _selectedDay = date;
-      _selectedEvents = _events[_selectedDay] ?? [];
+      _selectedEvents = picnics[_selectedDay] ?? [];
     });
     print(_selectedEvents);
   }
@@ -20,37 +25,12 @@ class _SchedulePageState extends State<SchedulePage> {
   List _selectedEvents;
   DateTime _selectedDay;
 
-  final Map _events = {
-    DateTime(2020, 3, 1): [
-      {'name': 'Event A', 'isDone': true},
-    ],
-    DateTime(2020, 3, 4): [
-      {'name': 'Event A', 'isDone': true},
-      {'name': 'Event B', 'isDone': true},
-    ],
-    DateTime(2020, 3, 5): [
-      {'name': 'Event A', 'isDone': true},
-      {'name': 'Event B', 'isDone': true},
-    ],
-    DateTime(2020, 3, 13): [
-      {'name': 'Event A', 'isDone': true},
-      {'name': 'Event B', 'isDone': true},
-      {'name': 'Event C', 'isDone': false},
-    ],
-    DateTime(2020, 3, 15): [
-      {'name': 'Event A', 'isDone': true},
-      {'name': 'Event B', 'isDone': true},
-      {'name': 'Event C', 'isDone': false},
-    ],
-    DateTime(2020, 3, 26): [
-      {'name': 'Event A', 'isDone': false},
-    ],
-  };
+  
 
   @override
   void initState() {
     super.initState();
-    _selectedEvents = _events[_selectedDay] ?? [];
+    _selectedEvents = picnics[_selectedDay] ?? [];
   }
 
   @override
@@ -67,14 +47,15 @@ class _SchedulePageState extends State<SchedulePage> {
           children: <Widget>[
             Container(
               child: Calendar(
-                  events: _events,
+                  events: picnics,
                   onRangeSelected: (range) =>
                       print("Range is ${range.from}, ${range.to}"),
                   onDateSelected: (date) => _handleNewDate(date),
                   isExpandable: true,
+                  isExpanded: true,
                   showTodayIcon: true,
                   eventDoneColor: Colors.green,
-                  eventColor: Colors.grey),
+                  eventColor: Colors.grey),                  
             ),
             _buildEventList()
           ],
@@ -84,21 +65,116 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   Widget _buildEventList() {
+    var myFormat = DateFormat('d-MM-yyyy');
     return Expanded(
       child: ListView.builder(
-        itemBuilder: (BuildContext context, int index) => Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(width: 1.5, color: Colors.black12),
-                ),
-              ),
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 0.0, vertical: 4.0),
-              child: ListTile(
-                title: Text(_selectedEvents[index]['name'].toString()),
-                onTap: () {},
-              ),
-            ),
+        itemBuilder: (BuildContext context, int index){
+          var picnic = _selectedEvents[index];
+          return Card(
+            elevation: 8.0,
+            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+            child: Container(
+                decoration:
+                    BoxDecoration(color: Colors.indigo.withOpacity(0.8)),
+                child: Container(
+                    padding: EdgeInsets.all(12.0),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: 80,
+                          height: 80,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(right: 12.0),
+                          child: CachedNetworkImage(
+                            imageUrl:picnic['thumbnail_url'].toString(),
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: imageProvider, fit: BoxFit.cover),
+                              ),
+                            ),
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                picnic['name'].toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  style: AppTheme.h2),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                picnic['description'].toString(),
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTheme.h3,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                                  FlatButton(
+                                    onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => BookingPage(),
+                                        )),
+                                    color: Colors.green,
+                                    padding: EdgeInsets.only(
+                                        left: 8, right: 8),
+                                    child: Row(
+                                      // Replace with a Row for horizontal icon + text
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.playlist_add_check,
+                                          color: Colors.white,
+                                        ),
+                                        Text("DS Đăng ký", style: AppTheme.h3,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  FlatButton(
+                                    onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => PicNicPage(),
+                                        )),
+                                    color: Colors.blue,
+                                    padding: EdgeInsets.only(
+                                        left: 8, right: 8),
+                                    child: Row(
+                                      // Replace with a Row for horizontal icon + text
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.watch_later,
+                                          color: Colors.white,
+                                        ),
+                                        Text("Lịch trình", style: AppTheme.h3)
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ))),
+          );
+        },
         itemCount: _selectedEvents.length,
       ),
     );

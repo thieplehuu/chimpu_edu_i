@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:chimpu_edu_i/data/dummy/index.dart';
 class MesssagePage extends StatefulWidget {
   @override
   _MesssagePageState createState() => _MesssagePageState();
@@ -20,7 +21,7 @@ class _MesssagePageState extends State<MesssagePage> {
               height: 40,
               margin: EdgeInsets.fromLTRB(0, 5, 10, 0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage('https://i.pravatar.cc/110'),
+                backgroundImage: NetworkImage(user.avatarUrl),
                 backgroundColor: Colors.grey[200],
                 minRadius: 30,
               ),
@@ -30,7 +31,7 @@ class _MesssagePageState extends State<MesssagePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Selina Kyle',
+                  'Nguyễn Lê Hiền Minh',
                   style: TextStyle(color: Colors.black),
                 ),
                 Text(
@@ -66,24 +67,24 @@ class _MesssagePageState extends State<MesssagePage> {
                                   TextStyle(color: Colors.grey, fontSize: 12),
                             ),
                             Bubble(
-                              message: 'Hi How are you ?',
+                              message: 'Chào cô giáo',
                               isMe: true,
                             ),
                             Bubble(
-                              message: 'have you seen the docs yet?',
+                              message: 'Hôm nay cháu bị ốm, cô để ý cháu giúp nhé ?',
                               isMe: true,
                             ),
                             Text(
-                              'Feb 25, 2018',
+                              'jan 25, 2019',
                               style:
                                   TextStyle(color: Colors.grey, fontSize: 12),
                             ),
                             Bubble(
-                              message: 'i am fine !',
+                              message: 'Chào chị',
                               isMe: false,
                             ),
                             Bubble(
-                              message: 'yes i\'ve seen the docs',
+                              message: 'Em sẽ chú ý',
                               isMe: false,
                             ),
                           ],

@@ -4,14 +4,15 @@ import 'package:chimpu_edu_i/data/model/picnic.dart';
 import 'package:intl/intl.dart';
 import 'package:chimpu_edu_i/data/model/teacher.dart';
 
-final teacher = new Teacher(
+final user = new Teacher(
   id: 1,
   email: 'thieplehuugt@gmail.com',
   name: 'Le Huu Thiep',
   address: 'Khối 12 TP Vinh - Nghệ An',
-  avatarUrl: 'https://congngheads.com/media/images/anh-dep/anh-gai-xinh-nhat-hien-nay-1559618296/bo-anh-gai-xinh-diu-dang-de-thuong-dao-cong-vien-lam-hinh-nen-24-07-2019-7.jpg',
+  avatarUrl: 'http://hinhnendethuong.com/uploads/ctv_5/FILE-20170210-140338LAKL7A9ZL3.jpg',
   birth: DateFormat("yyyy-MM-dd").parse('2000-07-19'),
 );
+
 
 final List<Children> childrens = [
   Children(
@@ -207,41 +208,73 @@ final List<Children> childrens = [
   )
 ];
 
-
-final List<PicNic> picnics = [
-  PicNic(
-    id: 1,
-    title: 'Dã ngoại công viên thỏ trắng',
-    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
-    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
-    address: 'Công viên thỏ trắng-520 CMT8'
-  ),
-  PicNic(
-    id: 2,
-    title: 'Dã ngoại công viên thỏ trắng',
-    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
-    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
-    address: 'Công viên thỏ trắng-520 CMT8'
-  ),
-  PicNic(
-    id: 3,
-    title: 'Dã ngoại công viên thỏ trắng',
-    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
-    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
-    address: 'Công viên thỏ trắng-520 CMT8'
-  ),
-  PicNic(
-    id: 4,
-    title: 'Dã ngoại công viên thỏ trắng',
-    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
-    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
-    address: 'Công viên thỏ trắng-520 CMT8'
-  ),
-  PicNic(
-    id: 5,
-    title: 'Dã ngoại công viên thỏ trắng',
-    description: 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
-    datetime: DateFormat("yyyy-MM-dd").parse('2020-03-19'),
-    address: 'Công viên thỏ trắng-520 CMT8'
-  ),
-];
+final Map picnics = {
+  DateTime(2020, 1, 18): [
+    {
+      'name': 'Tham quan công viên thỏ trắng', 
+      'isDone': false,
+      'thumbnail_url': 'http://giaitrithotrang.vn/wp-content/uploads/2016/08/Du-quay-day-vang.png',
+      'description': 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+      'address': 'Công viên thỏ trắng-520 CMT8'
+    },
+  ],
+  DateTime(2020, 1, 19): [
+    {
+      'name': 'Tham quan vườn bách thú', 
+      'isDone': false,
+      'thumbnail_url': 'http://giaitrithotrang.vn/wp-content/uploads/2016/08/Du-quay-day-vang.png',
+      'description': 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+      'address': 'Công viên thỏ trắng-520 CMT8'
+    },
+  ],
+  DateTime(2020, 1, 20): [
+    {
+      'name': 'Event A', 
+      'isDone': false,
+      'id': 1,
+      'thumbnail_url': 'http://giaitrithotrang.vn/wp-content/uploads/2016/08/Du-quay-day-vang.png',
+      'description': 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+      'address': 'Công viên thỏ trắng-520 CMT8'
+    },
+  ],
+  DateTime(2020, 1, 20): [
+    {
+      'name': 'Event A', 
+      'isDone': false,
+      'id': 2,
+      'thumbnail_url': 'http://giaitrithotrang.vn/wp-content/uploads/2016/08/Du-quay-day-vang.png',
+      'description': 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+      'address': 'Công viên thỏ trắng-520 CMT8'
+    },
+  ],
+  DateTime(2020, 1, 21): [
+    {
+      'name': 'Event A', 
+      'isDone': false,
+      'id': 3,
+      'thumbnail_url': 'http://giaitrithotrang.vn/wp-content/uploads/2016/08/Du-quay-day-vang.png',
+      'description': 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+      'address': 'Công viên thỏ trắng-520 CMT8'
+    },
+  ],
+  DateTime(2020, 1, 23): [
+    {
+      'name': 'Event A', 
+      'isDone': false,
+      'id': 4,
+      'thumbnail_url': 'http://giaitrithotrang.vn/wp-content/uploads/2016/08/Du-quay-day-vang.png',
+      'description': 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+      'address': 'Công viên thỏ trắng-520 CMT8'
+    },
+  ],
+  DateTime(2020, 1, 25): [
+    {
+      'name': 'Event A', 
+      'isDone': false,
+      'id': 5,
+      'thumbnail_url': 'http://giaitrithotrang.vn/wp-content/uploads/2016/08/Du-quay-day-vang.png',
+      'description': 'Các bé sẽ tham quan công viên thỏ trắng, hoạt động ngoài trời, chơi các trò chơi vận động',
+      'address': 'Công viên thỏ trắng-520 CMT8'
+    },
+  ]
+};
