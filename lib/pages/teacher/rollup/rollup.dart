@@ -176,7 +176,7 @@ class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(children.name, style: AppTheme.h1),
+                                Text(children.name, style: AppTheme.h1.copyWith(color: Colors.black)),
                                 SizedBox(
                                   height: 4,
                                 ),
@@ -196,7 +196,7 @@ class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
                                       children: <Widget>[
                                         Text('Nghỉ học', style: AppTheme.h2,),
                                         CircularCheckBox(
-                                          value: true,
+                                          value: false,
                                           materialTapTargetSize:
                                               MaterialTapTargetSize.padded,
                                           onChanged: (bool x) {})

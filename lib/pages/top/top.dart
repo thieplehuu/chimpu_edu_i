@@ -61,17 +61,17 @@ class TopPage extends StatelessWidget {
         children: <Widget>[
           Text(
             "Wellcome to Preschool Edu",
-            style: Theme.of(context).textTheme.display1.copyWith(
+            style: Theme.of(context).textTheme.display2.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
           ),
-          const SizedBox(height: 16.0),
+          const SizedBox(height: 64.0),
           Row(
             children: <Widget>[
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.calendarCheck,
+                  child: _buildActionWidget(FontAwesomeIcons.child,
                       "Phụ Huynh", Colors.deepOrange.withOpacity(0.7)),
                   onTap: () => Navigator.push(
                       context,
@@ -83,7 +83,7 @@ class TopPage extends StatelessWidget {
               const SizedBox(width: 16.0),
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.lock, "Giáo Viên",
+                  child: _buildActionWidget(FontAwesomeIcons.chalkboardTeacher, "Giáo Viên",
                       Colors.blue.withOpacity(0.6)),
                   onTap: () => Navigator.push(
                       context,
@@ -99,7 +99,7 @@ class TopPage extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.bookmark, "Videos",
+                  child: _buildActionWidget(FontAwesomeIcons.fileVideo, "Videos",
                       Colors.indigo.withOpacity(0.7)),
                   onTap: () {},
                 ),
@@ -108,7 +108,7 @@ class TopPage extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   child: _buildActionWidget(
-                      FontAwesomeIcons.file, "Blogs", Colors.greenAccent),
+                      FontAwesomeIcons.blog, "Blogs", Colors.greenAccent),
                   onTap: () {},
                 ),
               ),

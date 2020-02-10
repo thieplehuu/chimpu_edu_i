@@ -209,7 +209,7 @@ final List<Children> childrens = [
 ];
 
 final Map picnics = {
-  DateTime(2020, 1, 18): [
+  DateTime(2020, 2, 18): [
     {
       'name': 'Tham quan công viên thỏ trắng', 
       'isDone': false,
@@ -218,7 +218,7 @@ final Map picnics = {
       'address': 'Công viên thỏ trắng-520 CMT8'
     },
   ],
-  DateTime(2020, 1, 19): [
+  DateTime(2020, 3, 19): [
     {
       'name': 'Tham quan vườn bách thú', 
       'isDone': false,
@@ -227,7 +227,7 @@ final Map picnics = {
       'address': 'Công viên thỏ trắng-520 CMT8'
     },
   ],
-  DateTime(2020, 1, 20): [
+  DateTime(2020, 4, 20): [
     {
       'name': 'Event A', 
       'isDone': false,

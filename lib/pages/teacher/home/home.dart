@@ -3,10 +3,12 @@ import 'package:chimpu_edu_i/data/dummy/index.dart';
 import 'package:chimpu_edu_i/data/model/children.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/message/message.dart';
+import 'package:chimpu_edu_i/pages/teacher/eat/eat.dart';
 import 'package:chimpu_edu_i/pages/teacher/pickup/pickup.dart';
 import 'package:chimpu_edu_i/pages/teacher/picnic/list.dart';
 import 'package:chimpu_edu_i/pages/teacher/picnic/schedule.dart';
 import 'package:chimpu_edu_i/pages/teacher/rollup/rollup.dart';
+import 'package:chimpu_edu_i/pages/teacher/sleep/sleep.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -137,7 +139,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: GestureDetector(
                   child: _buildActionWidget(FontAwesomeIcons.utensils, "Ăn",
                       Colors.pinkAccent.withOpacity(0.7)),
-                  onTap: () {},
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => EatPage(),
+                    )),
                 ),
               ),
               const SizedBox(width: 16.0),
@@ -145,7 +151,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: GestureDetector(
                   child: _buildActionWidget(
                       FontAwesomeIcons.bed, "Ngủ", Colors.purpleAccent),
-                  onTap: () {},
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SleepPage(),
+                    )),
                 ),
               ),
             ],
