@@ -1,4 +1,5 @@
 import 'package:chimpu_edu_i/pages/login/login.dart';
+import 'package:chimpu_edu_i/pages/teacher/index.dart' as TeacherIndex;
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -88,7 +89,7 @@ class TopPage extends StatelessWidget {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => LoginPage(),
+                        builder: (_) => TeacherIndex.IndexPage(),
                       )),
                 ),
               ),
