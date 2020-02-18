@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:chimpu_edu_i/data/dummy/index.dart';
 
+import 'comment.dart';
+
 class SleepPage extends StatefulWidget {
   @override
   _SleepPageState createState() => _SleepPageState();
@@ -70,9 +72,13 @@ class _SleepPageState extends State<SleepPage> {
       );
   }
 
-  Widget _buildAddCommentButton(){
+  Widget _buildAddCommentButton(Children child){
     return RaisedButton(
-        onPressed: () {},
+        onPressed: ()  => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CommentPage(),
+          )),
         color: Colors.pinkAccent.withOpacity(0.7),
         child: Padding(
           padding: EdgeInsets.all(8),
@@ -133,7 +139,7 @@ class _SleepPageState extends State<SleepPage> {
                     SizedBox(
                       height: 4,
                     ),
-                    _buildAddCommentButton()
+                    _buildAddCommentButton(child)
                   ],
                 ),
               )),

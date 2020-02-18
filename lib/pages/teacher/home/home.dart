@@ -205,20 +205,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
   Container _buildImageSlider(List<Children> childrens, Color color){
     return Container(
-      height: 75.0,
+      height: 86.0,
       padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,        
         itemCount: picnics.length,
         itemBuilder: (BuildContext context, int index) {
           var children = childrens[index];
           return Container(
-            width: 75,
-            height: 75,
+            width: 86,
+            height: 86,
             margin: EdgeInsets.only(right: 4.0),
             child: CircularProfileAvatar(
               children.avatarUrl,
@@ -226,9 +222,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 'assets/placeholder.jpg',
                 fit: BoxFit.cover,
               ),
-              radius: 75 / 2,
-              borderWidth: 1,
-              borderColor: Colors.white70,
+              radius: 86 / 2,
+              borderWidth: 2,
+              borderColor: Colors.green,
             ),
           );
         },

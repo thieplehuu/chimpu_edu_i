@@ -1,10 +1,13 @@
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
 import 'package:chimpu_edu_i/data/model/children.dart';
+import 'package:chimpu_edu_i/pages/teacher/eat/comment.dart';
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:chimpu_edu_i/data/dummy/index.dart';
+
+import 'menu_food.dart';
 
 class EatPage extends StatefulWidget {
   @override
@@ -49,7 +52,11 @@ class _EatPageState extends State<EatPage> {
 
   Widget _buildAddMenuButton(){
     return RaisedButton(
-        onPressed: () {},
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => MenuFoodPage(),
+          )),
         color: Colors.green,
         child: Padding(
           padding: EdgeInsets.all(24),
@@ -74,9 +81,13 @@ class _EatPageState extends State<EatPage> {
       );
   }
 
-  Widget _buildAddCommentButton(){
+  Widget _buildAddCommentButton(Children child){
     return RaisedButton(
-        onPressed: () {},
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CommentPage(),
+          )),
         color: Colors.green,
         child: Padding(
           padding: EdgeInsets.all(8),
@@ -137,7 +148,7 @@ class _EatPageState extends State<EatPage> {
                     SizedBox(
                       height: 4,
                     ),
-                    _buildAddCommentButton()
+                    _buildAddCommentButton(child)
                   ],
                 ),
               )),
