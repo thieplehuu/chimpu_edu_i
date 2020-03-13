@@ -45,17 +45,11 @@ class _LoginFormState extends State<LoginForm> {
           children: <Widget>[
             Container(
                 margin: const EdgeInsets.only(top: 40.0, bottom: 20.0),
-                height: 80,
-                child: PNetworkImage(foodLogo)),
-            Text(
-              "Have a nice day".toUpperCase(),
-              style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold),
-            ),
+                height: 320,
+                child: Image(image: AssetImage('assets/images/top.png'))),
             SizedBox(height: 80.0),
             TextField(
+              controller: _usernameController,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(16.0),
                 prefixIcon: Container(
@@ -83,6 +77,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             SizedBox(height: 10.0),
             TextField(
+              controller: _passwordController,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(16.0),
                 prefixIcon: Container(

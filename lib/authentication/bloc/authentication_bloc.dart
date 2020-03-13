@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:chimpu_edu_i/repositories/user_repository.dart';
+import 'package:chimpu_edu_i/services/authenticate.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 
@@ -9,10 +9,10 @@ import 'authentication.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final UserRepository userRepository;
-
-  AuthenticationBloc({@required this.userRepository})
-      : assert(userRepository != null);
+  final AuthenticateService authenticateService;
+  final int accountType;
+  AuthenticationBloc({@required this.authenticateService, @required this.accountType})
+      : assert(authenticateService != null);
 
   @override
   AuthenticationState get initialState => AuthenticationUninitialized();
@@ -22,7 +22,7 @@ class AuthenticationBloc
     AuthenticationEvent event,
   ) async* {
     if (event is AppStarted) {
-      final bool hasToken = await userRepository.hasToken();
+      final bool hasToken = await authenticateService.hasToken();
 
       if (hasToken) {
         yield AuthenticationAuthenticated();
@@ -33,13 +33,13 @@ class AuthenticationBloc
 
     if (event is LoggedIn) {
       yield AuthenticationLoading();
-      await userRepository.persistToken(event.token);
+      await authenticateService.persistToken(event.token);
       yield AuthenticationAuthenticated();
     }
 
     if (event is LoggedOut) {
       yield AuthenticationLoading();
-      await userRepository.deleteToken();
+      await authenticateService.deleteToken();
       yield AuthenticationUnauthenticated();
     }
   }

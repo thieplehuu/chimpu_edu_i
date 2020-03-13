@@ -1,6 +1,6 @@
 import 'package:chimpu_edu_i/authentication/bloc/authentication.dart';
 import 'package:chimpu_edu_i/pages/login/login_form.dart';
-import 'package:chimpu_edu_i/repositories/user_repository.dart';
+import 'package:chimpu_edu_i/services/authenticate.dart';
 /**
  * Author: Damodar Lohani
  * profile: https://github.com/lohanidamodar
@@ -14,9 +14,9 @@ import 'bloc/login_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   static final String path = "lib/pages/login/login.dart";
-  final UserRepository userRepository;
-  LoginPage({Key key, @required this.userRepository})
-      : assert(userRepository != null),
+  final AuthenticateService authenticateService;
+  LoginPage({Key key, @required this.authenticateService})
+      : assert(authenticateService != null),
         super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
           create: (context) {
             return LoginBloc(
               authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
-              userRepository: userRepository,
+              authenticateService: authenticateService,
             );
           },
           child: LoginForm(),
