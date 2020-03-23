@@ -1,6 +1,5 @@
-import 'package:chimpu_edu_i/authentication/bloc/authentication.dart';
+import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
 import 'package:chimpu_edu_i/pages/login/login_form.dart';
-import 'package:chimpu_edu_i/services/authenticate.dart';
 /**
  * Author: Damodar Lohani
  * profile: https://github.com/lohanidamodar
@@ -14,10 +13,8 @@ import 'bloc/login_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   static final String path = "lib/pages/login/login.dart";
-  final AuthenticateService authenticateService;
-  LoginPage({Key key, @required this.authenticateService})
-      : assert(authenticateService != null),
-        super(key: key);
+  int accountType;
+  LoginPage({@required this.accountType,  key}):super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +28,10 @@ class LoginPage extends StatelessWidget {
           child: BlocProvider(
           create: (context) {
             return LoginBloc(
-              authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
-              authenticateService: authenticateService,
+              mainBloc: BlocProvider.of<MainBloc>(context),
             );
           },
-          child: LoginForm(),
+          child: LoginForm(accountType: accountType,),
         ),
       ),
     );

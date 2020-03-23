@@ -1,10 +1,9 @@
-
 import 'dart:io';
-
+import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
+import 'package:chimpu_edu_i/services/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'pages/top/top.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
@@ -45,18 +44,23 @@ class MyApp extends StatelessWidget {
       systemNavigationBarDividerColor: Colors.grey,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
-    return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Flutter UIs',
-            theme: ThemeData(
-              scaffoldBackgroundColor: Colors.grey.shade300,
-              primarySwatch: Colors.red,
-              accentColor: Colors.indigo,
-            ),
-            home: TopPage(),
-            routes: {
-              "home": (_) => TopPage(),
-            },
-          );
+    return BlocProvider(
+      create: (context) {
+        return MainBloc(mainService: MainService())..add(AppStarted());
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter UIs',
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.grey.shade300,
+          primarySwatch: Colors.red,
+          accentColor: Colors.indigo,
+        ),
+        home: TopPage(),
+        routes: {
+          "home": (_) => TopPage(),
+        },
+      ),
+    );
   }
 }

@@ -1,13 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:chimpu_edu_i/core/widgets/list_tile_checkbox.dart';
-import 'package:chimpu_edu_i/pages/teacher/picnic/picnic.dart';
-import 'package:chimpu_edu_i/pages/teacher/rollup/rollup.dart';
-import 'package:circular_check_box/circular_check_box.dart';
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
-import 'package:flutter/material.dart';
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:intl/intl.dart';
 import 'package:chimpu_edu_i/data/dummy/index.dart';
+import 'package:chimpu_edu_i/pages/teacher/picnic/picnic.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 class PicNicsPage extends StatefulWidget {
   const PicNicsPage({Key key}) : super(key: key);
 

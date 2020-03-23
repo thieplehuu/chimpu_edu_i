@@ -1,10 +1,4 @@
-import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:chimpu_edu_i/data/model/children.dart';
-import 'package:circular_check_box/circular_check_box.dart';
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:chimpu_edu_i/data/dummy/index.dart';
 
 class CommentPage extends StatefulWidget {
   @override

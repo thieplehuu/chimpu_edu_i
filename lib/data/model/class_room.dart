@@ -1,8 +1,8 @@
-import 'package:chimpu_edu_i/data/model/teacher.dart';
+import 'package:chimpu_edu_i/data/model/user.dart';
 
 class ClassRoom {
   final int id;
   final String name;
-  final List<Teacher> teachers;
+  final List<User> teachers;
   const ClassRoom({this.id, this.name, this.teachers});
 }

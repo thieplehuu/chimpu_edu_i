@@ -1,22 +1,25 @@
 part of 'rollup_bloc.dart';
 
 abstract class RollupEvent extends Equatable {
-  const RollupEvent();
+  RollupEvent([List props = const []]) : super();
 }
 
-class LoadData extends RollupEvent {
+class InitData extends RollupEvent {
+    @override
+  String toString() => 'InitData';
+
   @override
-  List<Object> get props => null;
+  List<Object> get props => [];
 }
 
-class RollupChildren extends RollupEvent {
-  final Children children;
+class RollupUpdateUser extends RollupEvent {
+  final User user;
 
-  const RollupChildren(this.children);
-
-  @override
-  List<Object> get props => [children];
+  RollupUpdateUser({this.user}) : super([user]);
 
   @override
-  String toString() => 'RollupChildren { todo: $children }';
+  String toString() => 'RollupUpdateUser { users: $user }';
+
+  @override
+  List<Object> get props => [user];
 }

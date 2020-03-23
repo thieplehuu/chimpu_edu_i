@@ -27,9 +27,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
   @override
   Widget build(BuildContext context) {
-    var orangeTextStyle = TextStyle(
-      color: Colors.deepOrange,
-    );
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

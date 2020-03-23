@@ -1,8 +1,4 @@
 import 'package:chimpu_edu_i/core/animations/face_animation.dart';
-import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:chimpu_edu_i/data/dummy/index.dart';
-import 'package:circular_check_box/circular_check_box.dart';
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

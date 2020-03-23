@@ -4,25 +4,35 @@ abstract class RollupState extends Equatable {
   const RollupState();
 }
 
-class RollupInitial extends RollupState {
+class RollupInitial extends RollupState { 
   @override
   List<Object> get props => [];
 }
 
-class RollupLoaded extends RollupInitial {
-  final List<Children> childrens;
-
-  RollupLoaded([this.childrens = const []]);
+class RollupUpdate extends RollupState {
+  
+  @override
+  List<Object> get props => null;
 
   @override
-  List<Object> get props => [childrens];
+  String toString() => 'RollupUpdate';
+}
+
+class RollupReady extends RollupState {
+  final List<User> users;
+
+  RollupReady({this.users});
 
   @override
-  String toString() => 'RollupLoaded { todos: $childrens }';
+  List<Object> get props => [users];
+
+  @override
+  String toString() => 'RollupReady { $users }';
 }
 
 
-class RollupNotLoaded extends RollupState {
+class RollupLoading extends RollupState {
   @override
-  List<Object> get props => [];
+  List<Object> get props => [];@override
+  String toString() => 'RollupLoading';
 }

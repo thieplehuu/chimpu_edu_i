@@ -24,26 +24,26 @@ class _NavigationScreenScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppTheme.nearlyWhite,
-      child: SafeArea(
-        top: false,
-        bottom: false,
-        child: Scaffold(
-          backgroundColor: AppTheme.nearlyWhite,
-          body: NavDrawerController(
-            screenIndex: drawerIndex,
-            drawerWidth: MediaQuery.of(context).size.width * 0.75,
-            animationController: (AnimationController animationController) {
-              sliderAnimationController = animationController;
-            },
-            onDrawerCall: (DrawerIndex drawerIndexdata) {
-              changeIndex(drawerIndexdata);
-            },
-            screenView: screenView,
+        color: AppTheme.nearlyWhite,
+        child: SafeArea(
+          top: false,
+          bottom: false,
+          child: Scaffold(
+            backgroundColor: AppTheme.nearlyWhite,
+            body: NavDrawerController(
+              screenIndex: drawerIndex,
+              drawerWidth: MediaQuery.of(context).size.width * 0.75,
+              animationController: (AnimationController animationController) {
+                sliderAnimationController = animationController;
+              },
+              onDrawerCall: (DrawerIndex drawerIndexdata) {
+                changeIndex(drawerIndexdata);
+              },
+              screenView: screenView,
+            ),
           ),
         ),
-      ),
-    );
+      );
   }
 
   void changeIndex(DrawerIndex drawerIndexdata) {
@@ -57,10 +57,7 @@ class _NavigationScreenScreenState extends State<NavigationScreen> {
         setState(() {
           screenView = HomePage();
         });
-      }  else {
-        
-      }
+      } else {}
     }
   }
 }
-

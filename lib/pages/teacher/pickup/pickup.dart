@@ -1,5 +1,4 @@
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:chimpu_edu_i/core/widgets/list_tile_checkbox.dart';
 import 'package:chimpu_edu_i/data/dummy/index.dart';
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';

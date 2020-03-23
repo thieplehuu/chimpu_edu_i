@@ -1,3 +1,4 @@
+/* 
 class Teacher{
   final int id;
   final String email;
@@ -7,3 +8,4 @@ class Teacher{
   final DateTime birth;
   const Teacher({this.id, this.email, this.name, this.avatarUrl, this.address, this.birth});
 }
+*/

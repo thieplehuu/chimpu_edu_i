@@ -1,14 +1,13 @@
-import 'package:chimpu_edu_i/core/widgets/network_image.dart';
-import 'package:chimpu_edu_i/pages/teacher/index.dart';
 import 'package:chimpu_edu_i/pages/teacher/register/register_teacher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/login_bloc.dart';
 import 'login.dart';
-import '../../core/res/assets.dart';
 
 class LoginForm extends StatefulWidget {
+  int accountType;
+  LoginForm({@required this.accountType,  key}):super(key: key);
   @override
   State<LoginForm> createState() => _LoginFormState();
 }
@@ -24,6 +23,7 @@ class _LoginFormState extends State<LoginForm> {
         LoginButtonPressed(
           username: _usernameController.text,
           password: _passwordController.text,
+          accountType: widget.accountType
         ),
       );
     }

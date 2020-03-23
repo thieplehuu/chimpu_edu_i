@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/teacher/index.dart' as TeacherIndex;
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../core/res/assets.dart';
@@ -11,113 +11,113 @@ class TopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var orangeTextStyle = TextStyle(
-      color: Colors.deepOrange,
-    );
+
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                height: 4.0,
-                width: 18.0,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(2.0),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  height: 4.0,
+                  width: 18.0,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(2.0),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 4.0),
-              Container(
-                height: 4.0,
-                width: 12.0,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(2.0),
+                const SizedBox(height: 4.0),
+                Container(
+                  height: 4.0,
+                  width: 12.0,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(2.0),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-            child: CircleAvatar(
-              maxRadius: 15.0,
-              backgroundImage: CachedNetworkImageProvider(avatars[0]),
+              ],
             ),
-          )
-        ],
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: <Widget>[
-          Text(
-            "Wellcome to Preschool Edu",
-            style: Theme.of(context).textTheme.display2.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
           ),
-          const SizedBox(height: 64.0),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.child,
-                      "Phụ Huynh", Colors.deepOrange.withOpacity(0.7)),
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => LoginPage(),
-                      )),
-                ),
+          actions: <Widget>[
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+              child: CircleAvatar(
+                maxRadius: 15.0,
+                backgroundImage: CachedNetworkImageProvider(avatars[0]),
               ),
-              const SizedBox(width: 16.0),
-              Expanded(
-                child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.chalkboardTeacher, "Giáo Viên",
-                      Colors.blue.withOpacity(0.6)),
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => TeacherIndex.IndexPage(),
-                      )),
+            )
+          ],
+        ),
+        body: ListView(
+          padding: const EdgeInsets.all(16.0),
+          children: <Widget>[
+            Text(
+              "Wellcome to Preschool Edu",
+              style: Theme.of(context).textTheme.display2.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+            ),
+            const SizedBox(height: 64.0),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: GestureDetector(
+                    child: _buildActionWidget(FontAwesomeIcons.child,
+                        "Phụ Huynh", Colors.deepOrange.withOpacity(0.7)),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => LoginPage(),
+                        )),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16.0),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: GestureDetector(
-                  child: _buildActionWidget(FontAwesomeIcons.fileVideo, "Videos",
-                      Colors.indigo.withOpacity(0.7)),
-                  onTap: () {},
+                const SizedBox(width: 16.0),
+                Expanded(
+                  child: GestureDetector(
+                    child: _buildActionWidget(
+                        FontAwesomeIcons.chalkboardTeacher,
+                        "Giáo Viên",
+                        Colors.blue.withOpacity(0.6)),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => TeacherIndex.IndexPage(),
+                        )),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 16.0),
-              Expanded(
-                child: GestureDetector(
-                  child: _buildActionWidget(
-                      FontAwesomeIcons.blog, "Blogs", Colors.greenAccent),
-                  onTap: () {},
+              ],
+            ),
+            const SizedBox(height: 16.0),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: GestureDetector(
+                    child: _buildActionWidget(FontAwesomeIcons.fileVideo,
+                        "Videos", Colors.indigo.withOpacity(0.7)),
+                    onTap: () {},
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+                const SizedBox(width: 16.0),
+                Expanded(
+                  child: GestureDetector(
+                    child: _buildActionWidget(
+                        FontAwesomeIcons.blog, "Blogs", Colors.greenAccent),
+                    onTap: () {},
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
   }
 
   Row _buildChannelListItem(String title) {

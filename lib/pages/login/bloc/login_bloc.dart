@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:chimpu_edu_i/authentication/bloc/authentication.dart';
-import 'package:chimpu_edu_i/services/authenticate.dart';
+import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
@@ -10,14 +9,11 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthenticateService authenticateService;
-  final AuthenticationBloc authenticationBloc;
+  final MainBloc mainBloc;    
 
   LoginBloc({
-    @required this.authenticateService,
-    @required this.authenticationBloc,
-  })  : assert(authenticateService != null),
-        assert(authenticationBloc != null);
+    @required this.mainBloc,
+  })  : assert(mainBloc != null);
 
   @override
   LoginState get initialState => LoginInitial();
@@ -28,14 +24,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginLoading();
 
       try {
-        final response = await authenticateService.authenticate(
+        final mainService = this.mainBloc.mainService;
+        final response = await mainService.authenticate(
           username: event.username,
           password: event.password,
-          accountType: authenticationBloc.accountType
+          accountType: event.accountType
         );
         if(response.code == 200){          
-          authenticationBloc.add(LoggedIn(token: response.token));
-          yield LoginInitial();
+          mainBloc.add(LoggedIn(token: response.token));
+          yield LoginOK();
         } else {
           yield LoginFailure(error: response.message);
         }

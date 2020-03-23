@@ -1,12 +1,11 @@
 import 'package:chimpu_edu_i/data/model/children.dart';
 import 'package:chimpu_edu_i/data/model/parents.dart';
-import 'package:chimpu_edu_i/data/model/picnic.dart';
+import 'package:chimpu_edu_i/data/model/user.dart';
 import 'package:intl/intl.dart';
-import 'package:chimpu_edu_i/data/model/teacher.dart';
 
-final user = new Teacher(
+final user = new User(
   id: 1,
-  email: 'thieplehuugt@gmail.com',
+  username: 'thieplehuugt@gmail.com',
   name: 'Le Huu Thiep',
   address: 'Khối 12 TP Vinh - Nghệ An',
   avatarUrl: 'http://hinhnendethuong.com/uploads/ctv_5/FILE-20170210-140338LAKL7A9ZL3.jpg',

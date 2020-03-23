@@ -1,8 +1,6 @@
-import 'package:chimpu_edu_i/authentication/bloc/authentication.dart';
-import 'package:chimpu_edu_i/common/loading_indicator.dart';
+import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/teacher/navigation_screen.dart';
-import 'package:chimpu_edu_i/services/authenticate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,10 +13,8 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> with TickerProviderStateMixin {
   static final String path = "lib/pages/teacher/home/home.dart";
-  AuthenticateService authenticateService;
   @override
   void initState() {
-    authenticateService = new AuthenticateService();
     super.initState();
   }
 
@@ -29,25 +25,16 @@ class _IndexPageState extends State<IndexPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthenticationBloc>(
-      create: (context) {
-        return AuthenticationBloc(authenticateService: authenticateService, accountType: 2)
-          ..add(AppStarted());
-      },
-      child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-        builder: (context, state) {
-          if (state is AuthenticationAuthenticated) {
-            return NavigationScreen();
-          }
-          if (state is AuthenticationUnauthenticated) {
-            return LoginPage(authenticateService: authenticateService);
-          }
-          if (state is AuthenticationLoading) {
-            return LoadingIndicator();
-          }          
-          return Container();
-          }
-        ),
+    return BlocBuilder<MainBloc, MainState>(
+      builder: (context, state) {
+        if (state is DataLoaded) {
+          return NavigationScreen();
+        }
+        if (state is Unauthenticated) {
+          return LoginPage(accountType: 2,);
+        }
+        return Container();
+      }
     );
   }
 }

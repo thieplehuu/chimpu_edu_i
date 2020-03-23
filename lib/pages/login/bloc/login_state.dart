@@ -11,6 +11,17 @@ class LoginInitial extends LoginState {}
 
 class LoginLoading extends LoginState {}
 
+class LoginOK extends LoginState {
+
+  const LoginOK();
+
+  @override
+  List<Object> get props => [];
+
+  @override
+  String toString() => 'LoginOK';
+}
+
 class LoginFailure extends LoginState {
   final String error;
 
