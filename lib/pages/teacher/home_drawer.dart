@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
+import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -104,10 +107,24 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                     blurRadius: 8),
                               ],
                             ),
-                            child: ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(60.0)),
-                              child: Image.asset('assets/images/userImage.png'),
+                            child: BlocBuilder<MainBloc, MainState>(
+                              builder: (_, state) {
+                                if (state is AppReady) {
+                                  final user = state.auth;
+                                  return CircleAvatar(
+                                    maxRadius: 60.0,
+                                    backgroundImage: CachedNetworkImageProvider(
+                                        user.avatarUrl),
+                                  );
+                                } else {
+                                  return ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(60.0)),
+                                    child: Image.asset(
+                                        'assets/images/default_user.png'),
+                                  );
+                                }
+                              },
                             ),
                           ),
                         ),
@@ -116,14 +133,18 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
-                    child: Text(
-                      'Chris Hemsworth',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: AppTheme.grey,
-                        fontSize: 18,
-                      ),
-                    ),
+                    child:
+                        BlocBuilder<MainBloc, MainState>(builder: (_, state) {
+                      if (state is AppReady) {
+                        final user = state.auth;
+                        return Text(user.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: AppTheme.grey,
+                              fontSize: 18,
+                            ));
+                      }
+                    }),
                   ),
                 ],
               ),

@@ -1,3 +1,4 @@
+import 'package:chimpu_edu_i/data/model/user.dart';
 import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/teacher/navigation_screen.dart';
@@ -27,11 +28,11 @@ class _IndexPageState extends State<IndexPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return BlocBuilder<MainBloc, MainState>(
       builder: (context, state) {
-        if (state is DataLoaded) {
+        if (state is AppReady) {
           return NavigationScreen();
         }
         if (state is Unauthenticated) {
-          return LoginPage(accountType: 2,);
+          return LoginPage(accountType: UserAccountType.getValue(AccountType.teacher));
         }
         return Container();
       }

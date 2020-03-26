@@ -6,7 +6,7 @@ import 'bloc/login_bloc.dart';
 import 'login.dart';
 
 class LoginForm extends StatefulWidget {
-  int accountType;
+  final int accountType;
   LoginForm({@required this.accountType,  key}):super(key: key);
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -141,7 +141,7 @@ class _LoginFormState extends State<LoginForm> {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => LoginPage(),
+                        builder: (_) => LoginPage(accountType: widget.accountType,),
                       )),
                 ),
               ],

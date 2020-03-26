@@ -37,10 +37,11 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       final String token = await mainService.getAccessToken();
 
       if (token != null && token.isEmpty == false) {
-      //final user = await mainService.getAuth();
+      final user = await mainService.getAuth();
       //  yield DataLoading();
       final users = await mainService.getStudentsTimesheet();
-      yield DataLoaded(
+      yield AppReady(
+        auth: user,
         users: users
       );
       } else {
@@ -49,36 +50,39 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     } else if (event is LoggedIn) {
       await mainService.persistToken(event.token);
       yield DataLoading();
+      final user = await mainService.getAuth();
       final users = await mainService.getStudentsTimesheet();
-      yield DataLoaded(
+      yield AppReady(
+        auth: user,
         users: users
       );
     } else if (event is LoggedOut) {
       await mainService.deleteToken();
       yield Unauthenticated();
-    } else if (event is LoadData) {
-      yield* _mapLoadDataToState();
     } else if (event is RollupUser){
       yield * _mapRollupUserToState(event);
+    } else if (event is PickupUser){
+      yield * _mapPickupUserToState(event);
     }
   }
   
-  Stream<MainState> _mapLoadDataToState() async* {
-    try {
-      yield DataLoading();
-      final users = await mainService.getStudentsTimesheet();
-      yield DataLoaded(
-        users: users
-      );
-    } catch (_) {
-      yield DataNotLoaded();
+  Stream<MainState> _mapRollupUserToState(RollupUser event) async* {
+    if (state is AppReady) {
+      var auth = (state as AppReady).auth;
+      final List<User> updatedUsers =_mapUpdateUserToState(event.user);
+      yield AppReady(auth: auth, users: updatedUsers);
+      //
+      // send api update user here
+      //_saveUsers(updatedUsers);
+      //
     }
   }
 
-  Stream<MainState> _mapRollupUserToState(RollupUser event) async* {
-    if (state is DataLoaded) {
+  Stream<MainState> _mapPickupUserToState(PickupUser event) async* {
+    if (state is AppReady) {
+      var auth = (state as AppReady).auth;
       final List<User> updatedUsers =_mapUpdateUserToState(event.user);
-      yield DataLoaded(users: updatedUsers);
+      yield AppReady(auth:auth, users: updatedUsers);
       //
       // send api update user here
       //_saveUsers(updatedUsers);
@@ -89,7 +93,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   List<User> _mapUpdateUserToState(User updateUser) {
 
     final List<User> updatedUsers =
-        (state as DataLoaded).users.map((user) {
+        (state as AppReady).users.map((user) {
       return user.id == updateUser.id ? updateUser : user;
     }).toList();
 

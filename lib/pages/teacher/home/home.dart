@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return BlocBuilder<MainBloc, MainState>(
         builder: (_, state) {
-          if (state is DataLoaded) {
-            final users = (state as DataLoaded).users;
+          if (state is AppReady) {
+            final users = state.users;
             return Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
@@ -50,10 +50,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 12.0, horizontal: 16.0),
-                    child: CircleAvatar(
-                      maxRadius: 15.0,
-                      backgroundImage: CachedNetworkImageProvider(avatars[0]),
-                    ),
+                    child: BlocBuilder<MainBloc, MainState>(
+                  builder: (_, state) {
+                    if(state is AppReady){                     
+                      final user = state.auth;             
+                      return CircleAvatar(
+                        maxRadius: 15.0,
+                        backgroundImage: CachedNetworkImageProvider(user.avatarUrl),
+                      );
+                    } else {                                  
+                      return ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(60.0)),
+                        child: Image.asset('assets/images/default_user.png'),
+                      );
+                    }              
+                  },
+                ),
                   )
                 ],
               ),
@@ -177,65 +190,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         });
   }
 
-  Row _buildChannelListItem(String title) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          FontAwesomeIcons.circle,
-          size: 16.0,
-        ),
-        const SizedBox(width: 10.0),
-        Text(title),
-        Spacer(),
-        IconButton(
-          icon: Icon(Icons.more_vert),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-
-  Row _buildRecentWikiRow(String avatar, String title) {
-    return Row(
-      children: <Widget>[
-        CircleAvatar(
-          radius: 15.0,
-          backgroundImage: CachedNetworkImageProvider(avatar),
-        ),
-        const SizedBox(width: 10.0),
-        Text(
-          title,
-          style: TextStyle(
-            color: Colors.grey.shade700,
-            fontWeight: FontWeight.bold,
-          ),
-        )
-      ],
-    );
-  }
-
   Container _buildImageSlider(List<User> childrens, Color color) {
     return Container(
-      height: 86.0,
+      height: 106.0,
       padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: picnics.length,
+        itemCount: childrens.length,
         itemBuilder: (BuildContext context, int index) {
           var children = childrens[index];
           return Container(
-            width: 86,
-            height: 86,
+            width: 106,
+            height: 106,
             margin: EdgeInsets.only(right: 4.0),
             child: CircularProfileAvatar(
               children.avatarUrl,
               errorWidget: (context, url, error) => Image.asset(
-                'assets/placeholder.jpg',
+                'assets/images/default_doctor.png',
                 fit: BoxFit.cover,
               ),
-              radius: 86 / 2,
+              radius: 106 / 2,
               borderWidth: 2,
               borderColor: Colors.green,
             ),

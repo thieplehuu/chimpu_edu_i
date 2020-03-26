@@ -42,7 +42,7 @@ class _RollUpPageState extends State<RollUpPage> with TickerProviderStateMixin {
     var myFormat = DateFormat('d-MM-yyyy');
     return  BlocBuilder<MainBloc, MainState>(
         builder: (_, state) {
-          List<User> users = (state as DataLoaded).users;
+          List<User> users = (state as AppReady).users;
           var totalOff = 0;
           var totalRollup = 0;
           for (var i = 0; i < users.length; i++) {

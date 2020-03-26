@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/teacher/index.dart' as TeacherIndex;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../../core/res/assets.dart';
 
 class TopPage extends StatelessWidget {
   static final String path = "lib/pages/top/top.dart";
@@ -48,10 +48,33 @@ class TopPage extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-              child: CircleAvatar(
-                maxRadius: 15.0,
-                backgroundImage: CachedNetworkImageProvider(avatars[0]),
-              ),
+              child: BlocBuilder<MainBloc, MainState>(
+                  builder: (_, state) {
+                    if(state is AppReady){                     
+                      final user = state.auth;             
+                      return ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15.0)),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              user.avatarUrl,
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: imageProvider, fit: BoxFit.cover),
+                            ),
+                          ),
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
+                        ),
+                      );
+                    } else {                                  
+                      return Container();
+                    }              
+                  },
+                ),
             )
           ],
         ),
@@ -60,7 +83,7 @@ class TopPage extends StatelessWidget {
           children: <Widget>[
             Text(
               "Wellcome to Preschool Edu",
-              style: Theme.of(context).textTheme.display2.copyWith(
+              style: Theme.of(context).textTheme.display1.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),

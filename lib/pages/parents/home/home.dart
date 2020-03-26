@@ -1,4 +1,5 @@
 import 'package:chimpu_edu_i/core/res/assets.dart';
+import 'package:chimpu_edu_i/data/model/user.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/message/message.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +103,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => LoginPage(),
+                        builder: (_) => LoginPage(accountType: UserAccountType.getValue(AccountType.parents),),
                       )),
                 ),
               ),

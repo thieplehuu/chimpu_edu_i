@@ -1,5 +1,23 @@
 
 import 'package:chimpu_edu_i/utils/constants.dart' as Constants;
+
+enum AccountType {
+  teacher,
+  parents
+}
+
+class UserAccountType{
+  static int getValue(AccountType type){
+    switch(type){
+      case AccountType.teacher: 
+        return 2;
+      case AccountType.parents: 
+        return 3;
+    }
+    return 0;
+  }
+}
+
 class User{
   final int id;
   final String username;

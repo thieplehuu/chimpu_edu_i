@@ -10,7 +10,7 @@ class Initial extends MainState {
 }
 
 class Authenticated extends MainState {
-  User auth;
+  final User auth;
   Authenticated({@required this.auth});
 
   @override
@@ -27,15 +27,17 @@ class DataLoading extends MainState {
   List<Object> get props => null;
 }
 
-class DataLoaded extends MainState {
+class AppReady extends MainState {
+  
+  final User auth;
   final List<User> users;
 
-  const DataLoaded({@required this.users});
+  const AppReady({@required this.auth, @required this.users});
   @override
   List<Object> get props => [users];
 
   @override
-  String toString() => 'DataLoaded { users: $users }';
+  String toString() => 'AppReady { users: $users }';
 }
 
 class DataNotLoaded extends MainState {

@@ -5,7 +5,6 @@ abstract class MainEvent extends Equatable {
 }
 class AppStarted extends MainEvent {
   @override
-  // TODO: implement props
   List<Object> get props => null;
 }
 
@@ -31,7 +30,6 @@ class LoggedInOk extends MainEvent {
 
 class LoggedOut extends MainEvent {
   @override
-  // TODO: implement props
   List<Object> get props => null;
 }
 class LoadData extends MainEvent {
@@ -45,6 +43,14 @@ class RollupUser extends MainEvent{
 
   final User user;
   RollupUser({@required this.user});
+}
+
+class PickupUser extends MainEvent{
+  @override
+  List<Object> get props => null;
+
+  final User user;
+  PickupUser({@required this.user});
 }
 
 class UpdateUser extends MainEvent {

@@ -13,7 +13,7 @@ import 'bloc/login_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   static final String path = "lib/pages/login/login.dart";
-  int accountType;
+  final int accountType;
   LoginPage({@required this.accountType,  key}):super(key: key);
 
   @override
