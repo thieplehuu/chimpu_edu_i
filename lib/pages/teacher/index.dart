@@ -1,4 +1,4 @@
-import 'package:chimpu_edu_i/data/model/user.dart';
+import 'package:chimpu_edu_i/models/user.dart';
 import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
 import 'package:chimpu_edu_i/pages/login/login.dart';
 import 'package:chimpu_edu_i/pages/teacher/navigation_screen.dart';

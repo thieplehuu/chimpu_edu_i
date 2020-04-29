@@ -1,6 +1,7 @@
 import 'package:chimpu_edu_i/core/theme/app_theme.dart';
-import 'package:chimpu_edu_i/data/model/user.dart';
+import 'package:chimpu_edu_i/models/user.dart';
 import 'package:chimpu_edu_i/pages/blocs/main/bloc/main_bloc.dart';
+import 'package:chimpu_edu_i/pages/teacher/student/student.dart';
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
@@ -191,16 +192,25 @@ class _PickUpPageState extends State<PickUpPage> with TickerProviderStateMixin {
                         padding: EdgeInsets.all(12.0),
                         child: Row(
                           children: <Widget>[
-                            CircularProfileAvatar(
-                              user.avatarUrl,
-                              errorWidget: (context, url, error) => Image.asset(
-                                'assets/placeholder.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                              radius: 110 / 2 - 12,
-                              borderWidth: 2,
-                              borderColor: Colors.white70,
-                            ),
+                            GestureDetector(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => StudentPage(
+                                        user: user,
+                                      ),
+                                    )),
+                                child: CircularProfileAvatar(
+                                  user.avatarUrl,
+                                  errorWidget: (context, url, error) =>
+                                      Image.asset(
+                                    'assets/placeholder.jpg',
+                                    fit: BoxFit.cover,
+                                  ),
+                                  radius: 110 / 2 - 12,
+                                  borderWidth: 2,
+                                  borderColor: Colors.white70,
+                                )),
                             Expanded(
                                 child: Container(
                               margin: EdgeInsets.only(left: 12),

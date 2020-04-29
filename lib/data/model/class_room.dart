@@ -1,4 +1,6 @@
-import 'package:chimpu_edu_i/data/model/user.dart';
+
+
+import 'package:chimpu_edu_i/models/user.dart';
 
 class ClassRoom {
   final int id;

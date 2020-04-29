@@ -1,6 +1,6 @@
 import 'package:chimpu_edu_i/data/model/children.dart';
 import 'package:chimpu_edu_i/data/model/parents.dart';
-import 'package:chimpu_edu_i/data/model/user.dart';
+import 'package:chimpu_edu_i/models/user.dart';
 import 'package:intl/intl.dart';
 
 final user = new User(

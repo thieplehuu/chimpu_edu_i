@@ -32,10 +32,6 @@ class LoggedOut extends MainEvent {
   @override
   List<Object> get props => null;
 }
-class LoadData extends MainEvent {
-  @override  
-  List<Object> get props => null;
-}
 
 class RollupUser extends MainEvent{
   @override
@@ -57,6 +53,15 @@ class UpdateUser extends MainEvent {
   
   final User user;
   UpdateUser({@required this.user});
+
+  @override
+  List<Object> get props => null;
+}
+
+class UpdateUsers extends MainEvent {
+  
+  final List<User> users;
+  UpdateUsers({@required this.users});
 
   @override
   List<Object> get props => null;

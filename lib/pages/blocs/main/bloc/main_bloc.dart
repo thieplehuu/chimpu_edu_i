@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:chimpu_edu_i/data/model/user.dart';
+import 'package:chimpu_edu_i/models/user.dart';
 import 'package:chimpu_edu_i/services/main.dart';
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 
 part 'main_event.dart';
@@ -11,8 +12,7 @@ part 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
   MainService mainService;
-  MainBloc({@required this.mainService})
-      : assert(mainService != null);
+  MainBloc({@required this.mainService}) : assert(mainService != null);
   /*
   AuthenticationBloc authBloc;
   StreamSubscription authenticationSubscription;
@@ -28,7 +28,6 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   @override
   MainState get initialState => Initial();
 
-
   @override
   Stream<MainState> mapEventToState(
     MainEvent event,
@@ -37,13 +36,10 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       final String token = await mainService.getAccessToken();
 
       if (token != null && token.isEmpty == false) {
-      final user = await mainService.getAuth();
-      //  yield DataLoading();
-      final users = await mainService.getStudentsTimesheet();
-      yield AppReady(
-        auth: user,
-        users: users
-      );
+        final user = await mainService.getAuth();
+        //  yield DataLoading();
+        final users = await mainService.getStudentsTimesheet(user.classRoomId);
+        yield AppReady(auth: user, users: users);
       } else {
         yield Unauthenticated();
       }
@@ -51,26 +47,27 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       await mainService.persistToken(event.token);
       yield DataLoading();
       final user = await mainService.getAuth();
-      final users = await mainService.getStudentsTimesheet();
-      yield AppReady(
-        auth: user,
-        users: users
-      );
+      final users = await mainService.getStudentsTimesheet(user.classRoomId);
+      yield AppReady(auth: user, users: users);
     } else if (event is LoggedOut) {
       await mainService.deleteToken();
       yield Unauthenticated();
-    } else if (event is RollupUser){
-      yield * _mapRollupUserToState(event);
-    } else if (event is PickupUser){
-      yield * _mapPickupUserToState(event);
+    } else if (event is RollupUser) {
+      yield* _mapRollupUserToState(event);
+    } else if (event is PickupUser) {
+      yield* _mapPickupUserToState(event);
+    } else if (event is UpdateUsers) {
+      yield* _mapUpdateUsersToState(event);
     }
   }
-  
+
   Stream<MainState> _mapRollupUserToState(RollupUser event) async* {
     if (state is AppReady) {
       var auth = (state as AppReady).auth;
-      final List<User> updatedUsers =_mapUpdateUserToState(event.user);
+      final List<User> updatedUsers = _mapUpdateUserToState(event.user);
+      final user = await mainService.getAuth();
       yield AppReady(auth: auth, users: updatedUsers);
+
       //
       // send api update user here
       //_saveUsers(updatedUsers);
@@ -81,8 +78,8 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   Stream<MainState> _mapPickupUserToState(PickupUser event) async* {
     if (state is AppReady) {
       var auth = (state as AppReady).auth;
-      final List<User> updatedUsers =_mapUpdateUserToState(event.user);
-      yield AppReady(auth:auth, users: updatedUsers);
+      final List<User> updatedUsers = _mapUpdateUserToState(event.user);
+      yield AppReady(auth: auth, users: updatedUsers);
       //
       // send api update user here
       //_saveUsers(updatedUsers);
@@ -91,14 +88,17 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   }
 
   List<User> _mapUpdateUserToState(User updateUser) {
-
-    final List<User> updatedUsers =
-        (state as AppReady).users.map((user) {
+    final List<User> updatedUsers = (state as AppReady).users.map((user) {
       return user.id == updateUser.id ? updateUser : user;
     }).toList();
 
     return updatedUsers;
   }
+
+  Stream<MainState> _mapUpdateUsersToState(UpdateUsers event) async* {
+    if (state is AppReady) {
+      var auth = (state as AppReady).auth;
+      yield AppReady(auth: auth, users: event.users);
+    }
+  }
 }
-
-
