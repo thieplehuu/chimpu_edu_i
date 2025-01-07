@@ -1,29 +1,37 @@
 # Arent Healthy API
 
-A new Flutter project.
+A test Java backend api project.
 
-## Getting Started
+## 1 Getting Started
 
-#Run applicaiton:
-# visual studio code:
+### 1.1 Folder Struct:
+ - docs: database diagram and Postman json file
+ - h2: H2 database file
+ - src: project source
+
+### 1.2 Run application:
+#### - visual studio code:
 Click run Java
-# maven apache 
+#### - maven apache:
 mvn spring-boot:run
 
-# accept api document url
+### 1.2 Accept api document url
 http://localhost:8080/swagger-ui/index.html
-# default account:
+### Default account:
 username: admin
 password: Admin@123
 
-# example api login
-http://localhost:8080/auth/login
-payload:
-{
-    "username": "admin",
-    "password": "Admin@123"
+### 1.3 Authentication  
+- Login API  
+http://localhost:8080/auth/login  
+payload:  
+{  
+ "username": "admin",  
+"password": "Admin@123"  
+}  
+responsive:   
+{   
+ "accessToken":"xxxx"   
 }
-responsive: 
-{"accessToken":"xxxx"}
-# authenticate
+- Add accept token into Authorization header
 Authoriztion Bear xxxxx
