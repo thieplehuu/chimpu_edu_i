@@ -35,3 +35,13 @@ responsive:
 }
 - Add accept token into Authorization header
 Authoriztion Bear xxxxx
+### 1.4 Api for homepage  
+- http://localhost:8080/meal-type/all
+- http://localhost:8080/user/meals
+- http://localhost:8080/user/meals-by-type?meal-type-id=1
+- http://localhost:8080/user/meals-by-date?date=2025-01-07
+### 1.5 Api for body log graph  
+- http://localhost:8080/user/body-logs
+### 1.6 Api for workout history log
+- http://localhost:8080/user/workouts  
+
